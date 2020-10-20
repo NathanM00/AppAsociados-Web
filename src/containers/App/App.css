@@ -2,4 +2,25 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.App{
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.MainContainer{
+    justify-content: space-evenly;
+    background-color: #F5F6FA;
+    height: 100%;
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    flex-wrap: nowrap ;
+    overFlow: 'auto',
+
 }

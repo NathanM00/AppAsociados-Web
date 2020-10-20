@@ -1,45 +1,48 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from "react-icons/ai";
 import { SidebarData } from './SidebarData';
-import './NavBar.css';
 import { IconContext } from 'react-icons';
+import logo from '../../resources/navLogo.svg';
+import Bar from '../Bar/Bar';
 
 function NavBar(props) {
 
-    const [sidebar, setSideBar] = useState(false);
-    const showSidebar = () => setSideBar(!sidebar);
+    const [active, setActive] = React.useState(false);
+    const [ page, setPage] = React.useState(true);
+
+
+    function handleChange(cambio){
+
+        /*
+        if(page === cambio){
+            console.log(cambio);
+            console.log(page);
+            setActive(true);
+        } else if(page !== cambio){
+            setPage (cambio);
+            console.log(cambio);
+            console.log(page);
+            setActive(false);
+        }*/
+    }
 
     return ( 
-        <>
+        
         <IconContext.Provider value={{ color: '#fff' }}>
-         <div className='navbar'>
-            <Link to="#" className='menu-bars'>
-                <FaIcons.FaBars onClick={showSidebar} />
-            </Link>
-        </div>
-             <nav  className={sidebar ? 'nav-menu active' : 'nav-menu'}> 
-                <ul className='nav-menu-items' onClick={showSidebar}> 
-                    <li className='navber-toggle'>
-                        <Link to="#" className='menu-bars'>
-                            <AiIcons.AiOutlineClose />
-                        </Link>
-                    </li>
+             <nav  className='nav-menu'> 
+
+             <img src={logo} className='nav-logo' alt=''></img>
+
+                <ul className='nav-menu-items' > 
                     {SidebarData.map((item, index) =>{
                         return(
-                         <li key={index} className={item.cName}>
-                             <Link to={item.path}>
-                                 {item.icon}
-                                 <span>{item.title}</span>
-                             </Link>
-                         </li>   
+                         <Bar onClick= {handleChange} key={index}  active={page === item.path ? active : false}
+                         path={item.path} cName={item.cName} title={item.title} icon={item.icon} icon2={item.icon2} />                         
                         )
                     })}
                 </ul>
              </nav>
         </IconContext.Provider>
-        </>
+     
     );
 }
 
