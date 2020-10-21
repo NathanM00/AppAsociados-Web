@@ -35,7 +35,7 @@ function NavBar(props) {
                 <ul className='nav-menu-items' > 
                     {SidebarData.map((item, index) =>{
                         return(
-                         <Bar onClick= {handleChange} key={index}  active={page === item.path ? active : false}
+                         <Bar onClick= {handleChange} key={index}  active={item.estate}
                          path={item.path} cName={item.cName} title={item.title} icon={item.icon} icon2={item.icon2} />                         
                         )
                     })}

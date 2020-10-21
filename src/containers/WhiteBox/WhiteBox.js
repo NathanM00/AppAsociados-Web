@@ -10,7 +10,7 @@ function WhiteBox(props) {
     const classes = useStyles();
 
     return (
-        <Card className={classes.root}>
+        <Card className={classes.root} height={props.size !== "" ? props.size : "auto"}>
             <CardContent>
               <p className={classes.title}>
                 {props.title}
@@ -38,7 +38,7 @@ const useStyles = makeStyles({
       maxWidth: '100%',
       height: 'auto',
       maxHeight: '50%',
-
+      borderRadius: '10px'
     },
     media: {
       height: 'auto',
