@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../../utils/firebase';
-import Comentario from '../Comentario/Comentario';
+import Noticia from '../Noticia/Noticia';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from "@material-ui/core/styles";
 import { Hidden } from '@material-ui/core';
 
-export default function SecComentarios( props) {
+export default function SecNoticias( props) {
   const classes = useStyles();
-  const [comentList, setComentList] = useState([]);
+  const [newsList, setNewsList] = useState([]);
 
     useEffect(() => {
-      const comentRef = firebase.database().ref('Comentarios');
-      comentRef.on('value', (snapshot) => {
-        const coments = snapshot.val();
-        const comentList = [];
-        for (let id in coments) {
-          comentList.push({id, ...coments[id] } );
+      const newsRef = firebase.database().ref('Noticias');
+      newsRef.on('value', (snapshot) => {
+        const news = snapshot.val();
+        const newsList = [];
+        for (let id in news) {
+          newsList.push({id, ...news[id] } );
         }
-        setComentList(comentList.reverse());
+        setNewsList(newsList.reverse());
       });
     }, []);
 
@@ -28,10 +28,10 @@ export default function SecComentarios( props) {
           <p className={classes.title}>
             {props.title}
           </p>
-          <div className={classes.comments}>
-              {comentList ? comentList.map((coment,index) =>
+          <div className={classes.news}>
+              {newsList ? newsList.map((news,index) =>
 
-              <Comentario className={classes.coment} coment={coment} key={index}/> ) : ''}  
+              <Noticia className={classes.news} news={news} key={index}/> ) : ''}  
           </div>
 
              
@@ -44,24 +44,27 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     maxWidth: '100%',
-    height: '400px',
-    overflow: 'auto',
+    height: '500px',
+    overflow: 'scroll',
+
   },
 
   title: {
-    height: '15%',
-    padding: '3% 10% 0 5%',
-    margin: "0 0 5% 0",
+    height: '20%',
+    padding: '3% 5% 0 5%',
+    margin: "0 0 2% 0",
     fontSize: '30px',
     fontWeight: 700,
     color: "#474747",
   },
 
-  comments: {
+  news: {
     width: '100%',
     height: '75%',
+    display: 'box',
+    justifyContent:'flex-start',
     overflow: 'scroll',
-    flexDirection: 'column',
+    flexDirection: 'row',
   },
 
 });

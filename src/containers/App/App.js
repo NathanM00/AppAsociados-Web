@@ -6,6 +6,7 @@ import Noticias from '../../Pages/Noticias/Noticias';
 import Analiticas from '../../Pages/Analiticas/Analiticas';
 import NavBar from '../../components/NavBar/NavBar';
 import './App.css';
+import Eventos from '../../Pages/Eventos/Eventos';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
                <Route path="/" exact component={VistaGeneral}/>
                <Route path="/analiticas" component={Analiticas}/>
                <Route path="/noticias" component={Noticias}/>
+               <Route path="/eventos" component={Eventos}/>
+
              </Switch>
         </div>
 

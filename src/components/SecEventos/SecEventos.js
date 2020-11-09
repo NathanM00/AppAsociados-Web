@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../../utils/firebase';
-import Comentario from '../Comentario/Comentario';
+import Evento from '../Evento/Evento';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from "@material-ui/core/styles";
 import { Hidden } from '@material-ui/core';
 
-export default function SecComentarios( props) {
+export default function SecEventos( props) {
   const classes = useStyles();
-  const [comentList, setComentList] = useState([]);
+  const [eventList, setEventList] = useState([]);
 
     useEffect(() => {
-      const comentRef = firebase.database().ref('Comentarios');
-      comentRef.on('value', (snapshot) => {
-        const coments = snapshot.val();
-        const comentList = [];
-        for (let id in coments) {
-          comentList.push({id, ...coments[id] } );
+      const eventRef = firebase.database().ref('Eventos');
+      eventRef.on('value', (snapshot) => {
+        const events = snapshot.val();
+        const eventList = [];
+        for (let id in events) {
+          eventList.push({id, ...events[id] } );
         }
-        setComentList(comentList.reverse());
+        setEventList(eventList.reverse());
       });
     }, []);
 
@@ -28,10 +28,10 @@ export default function SecComentarios( props) {
           <p className={classes.title}>
             {props.title}
           </p>
-          <div className={classes.comments}>
-              {comentList ? comentList.map((coment,index) =>
+          <div className={classes.events}>
+              {eventList ? eventList.map((event,index) =>
 
-              <Comentario className={classes.coment} coment={coment} key={index}/> ) : ''}  
+              <Evento className={classes.event} event={event} key={index}/> ) : ''}  
           </div>
 
              
@@ -44,24 +44,27 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     maxWidth: '100%',
-    height: '400px',
-    overflow: 'auto',
+    height: '500px',
+    overflow: 'scroll',
+
   },
 
   title: {
-    height: '15%',
-    padding: '3% 10% 0 5%',
-    margin: "0 0 5% 0",
+    height: '20%',
+    padding: '3% 5% 0 5%',
+    margin: "0 0 2% 0",
     fontSize: '30px',
     fontWeight: 700,
     color: "#474747",
   },
 
-  comments: {
+  events: {
     width: '100%',
     height: '75%',
+    display: 'box',
+    justifyContent:'flex-start',
     overflow: 'scroll',
-    flexDirection: 'column',
+    flexDirection: 'row',
   },
 
 });

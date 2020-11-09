@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import SecNoticias from '../../components/SecNoticias/SecNoticias';
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import WhiteBox from '../../containers/WhiteBox/WhiteBox'
+import  SecEventos  from '../../components/SecEventos/SecEventos';
 
-function Noticias(props) {
+function Eventos(props) {
 
     const classes = useStyles();
 
@@ -12,11 +12,11 @@ function Noticias(props) {
         <div className={classes.grandContainer}>
             <Grid container spacing={2} wrap={"wrap"} alignItems={"flex-start"} justify={"flex-start"} className={classes.container}>
                 <Grid item xs={12}  className={classes.box}>
-                     <SecNoticias title={"Noticias recientes"} ></SecNoticias>
+                     <SecEventos title={"Eventos recientes"} ></SecEventos>
                 </Grid>
                 <Grid item xs={12}  className={classes.box}>
-                        <WhiteBox title={"Nuevo noticia"} hasDesc={false}
-                         hasImage={false} hasForm={true} form={"noFull"} ></WhiteBox>
+                        <WhiteBox title={"Nuevo evento"} hasDesc={false}
+                         hasImage={false} hasForm={true} form={"full"} ></WhiteBox>
                 </Grid>
             </Grid>
 
@@ -24,7 +24,7 @@ function Noticias(props) {
     )
 }
 
-export default Noticias;
+export default Eventos;
 
 const useStyles = makeStyles((theme) => ({
     grandContainer: {

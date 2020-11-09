@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     width: '90%',
     display: 'flex',
     flexWrap: 'wrap',
-    height:'35%',
+    height:'45%',
     justifyContent: 'space-evenly',
     padding: '3%',
   },

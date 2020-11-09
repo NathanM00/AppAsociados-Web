@@ -16,11 +16,11 @@ function VistaGeneral(props) {
             <Grid container spacing={2} wrap={"wrap"} alignItems={"flex-start"} justify={"flex-start"} className={classes.container}>
                 
             <Grid item xs={3}  className={classes.box}>
-                        <WhiteBox title={"Número de Asociados"} desc={""}
+                        <WhiteBox title={"Número de Asociados"} hasDesc={false}
                          hasImage={true} image={"numeroAsoFake"} imageHover={"Esta es el numero de asociados a día de hoy"}></WhiteBox>
                 </Grid>
                 <Grid item xs={3}  className={classes.box}>
-                        <WhiteBox title={"Participación en eventos"} desc={""}
+                        <WhiteBox title={"Participación en eventos"} hasDesc={false}
                          hasImage={true} image={"participaFake"} imageHover={"Porcentaje de participación a eventos a día de hoy"}></WhiteBox>
                 </Grid>
                 <Grid item xs={6} className={classes.box} overflow='auto'>
@@ -28,12 +28,12 @@ function VistaGeneral(props) {
                 </Grid>         
 
                 <Grid item xs={6}  className={classes.box}>
-                        <WhiteBox title={"Flujo de Asociados Agosto 2020"} desc={"Se ha mantenido un numero de asociados fluctuante, entre 2200 y 2050."}
+                        <WhiteBox title={"Flujo de Asociados Agosto 2020"} hasDesc={true} desc={"Se ha mantenido un numero de asociados fluctuante, entre 2200 y 2050."}
                          hasImage={true} image={"grafica1"} imageHover={"Esta es la grafica 1"}></WhiteBox>
                 </Grid>
 
                 <Grid item xs={6} className={classes.box}>
-                    <WhiteBox title={"Flujo de Participación Agosto"} desc={"Se ha mantenido una participación fluctuante, entre 2200 y 2050 asociados participando en actividades."}
+                    <WhiteBox title={"Flujo de Participación Agosto"} hasDesc={true} desc={"Se ha mantenido una participación fluctuante, entre 2200 y 2050 asociados participando en actividades."}
                             hasImage={true} image={"grafica2"} imageHover={"Esta es la grafica 1"}></WhiteBox>
                 </Grid>     
 
@@ -55,5 +55,5 @@ const useStyles = makeStyles((theme) => ({
     box: {
         height: 'auto',
     },
-  }));
+}));
   
