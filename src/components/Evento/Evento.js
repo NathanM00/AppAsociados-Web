@@ -8,7 +8,7 @@ export default function Evento({ event }) {
   return (
     <div className={classes.root}>
           {event.archivo !== "" &&   
-          <img  src={require("../../resources/events/"+event.archivo+".png")} className={classes.image}title={event.destino} />
+          <img  src={event.archivo} className={classes.image}title={event.destino} />
          }
           <h1 className={classes.title}>{event.destino}</h1>
           <h1 className={classes.date}>{event.fecha}</h1>

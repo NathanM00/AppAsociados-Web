@@ -18,7 +18,7 @@ export default function SecEventos( props) {
         for (let id in events) {
           eventList.push({id, ...events[id] } );
         }
-        setEventList(eventList.reverse());
+        setEventList(eventList);
       });
     }, []);
 
