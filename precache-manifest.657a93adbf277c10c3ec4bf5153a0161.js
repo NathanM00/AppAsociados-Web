@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "47a0767587dac1e4a93ceb86e769a063",
+    "revision": "3d3bb7a0475b96feaf36e67c3337237c",
     "url": "/AppAsociados-Web/index.html"
   },
   {
-    "revision": "5b33cb7d6c48954aae94",
+    "revision": "e6fe6125b1c985045ab3",
     "url": "/AppAsociados-Web/static/css/main.00ab5e1d.chunk.css"
   },
   {
-    "revision": "91c3a6fbb5bc1bd3b9da",
-    "url": "/AppAsociados-Web/static/js/2.8ddf5529.chunk.js"
+    "revision": "53ab91b99f45ed0a1f5d",
+    "url": "/AppAsociados-Web/static/js/2.a5299b64.chunk.js"
   },
   {
     "revision": "9cf9d893b5c51de0aa6dd9e07be64537",
-    "url": "/AppAsociados-Web/static/js/2.8ddf5529.chunk.js.LICENSE.txt"
+    "url": "/AppAsociados-Web/static/js/2.a5299b64.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5b33cb7d6c48954aae94",
-    "url": "/AppAsociados-Web/static/js/main.1d589efc.chunk.js"
+    "revision": "e6fe6125b1c985045ab3",
+    "url": "/AppAsociados-Web/static/js/main.6ef806a8.chunk.js"
   },
   {
     "revision": "fd567818a79c87809e04",
