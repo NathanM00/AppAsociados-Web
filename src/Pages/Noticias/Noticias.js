@@ -7,15 +7,20 @@ import WhiteBox from '../../containers/WhiteBox/WhiteBox'
 function Noticias(props) {
 
     const classes = useStyles();
+    const [editableNews, setEditableNews] = useState([]);
+
+    function handleEdit(editableNews){
+        setEditableNews(editableNews);
+      }  
 
     return (
         <div className={classes.grandContainer}>
             <Grid container spacing={2} wrap={"wrap"} alignItems={"flex-start"} justify={"flex-start"} className={classes.container}>
                 <Grid item xs={12}  className={classes.box}>
-                     <SecNoticias title={"Noticias recientes"} ></SecNoticias>
+                     <SecNoticias onEdit={handleEdit} title={"Noticias recientes"} ></SecNoticias>
                 </Grid>
                 <Grid item xs={12}  className={classes.box}>
-                        <WhiteBox title={"Nuevo noticia"} hasDesc={false}
+                        <WhiteBox edit={editableNews} title={"Nuevo noticia"} hasDesc={false}
                          hasImage={false} hasForm={true} form={"noFull"} ></WhiteBox>
                 </Grid>
             </Grid>

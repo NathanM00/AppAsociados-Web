@@ -22,7 +22,7 @@ export const SidebarData = [
     estate: true,
   },
   {
-    title: 'Analiticas',
+    title: 'Analíticas',
     path: '/analiticas',
     icon: stats,
     icon2: stats2,

@@ -18,7 +18,7 @@ export default function SecEventos( props) {
         for (let id in events) {
           eventList.push({id, ...events[id] } );
         }
-        setEventList(eventList);
+        setEventList(eventList.reverse());
       });
     }, []);
 
@@ -63,6 +63,7 @@ const useStyles = makeStyles({
     height: '75%',
     display: 'box',
     justifyContent:'flex-start',
+    alignItems:'center',
     overflow: 'scroll',
     flexDirection: 'row',
   },

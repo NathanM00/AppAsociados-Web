@@ -11,7 +11,7 @@ function Analiticas(props) {
         <div className={classes.grandContainer}>
             <Grid container spacing={2} wrap={"wrap"} alignItems={"flex-start"} justify={"flex-start"} className={classes.container}>
                 <Grid item xs={6}  className={classes.box}>
-                        <WhiteBox title={"Analiticas"} hasDesc={true} desc={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vestibulum metus, eu condimentum dui. Morbi feugiat eu."}
+                        <WhiteBox title={"Analíticas"} hasDesc={true} desc={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non vestibulum metus, eu condimentum dui. Morbi feugiat eu."}
                          hasImage={true} image={"grafica1"} imageHover={"Esta es la grafica 1"}></WhiteBox>
                 </Grid>
                 <Grid item xs={3}  className={classes.box}>

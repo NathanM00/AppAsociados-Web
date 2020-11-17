@@ -6,12 +6,14 @@ import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from "@material-ui/core/styles";
 import { Hidden } from '@material-ui/core';
 
-export default function SecNoticias( props) {
+export default function SecNoticias(props) {
   const classes = useStyles();
   const [newsList, setNewsList] = useState([]);
+  const [editableNews, setEditableNews] = useState([]);
 
     useEffect(() => {
       const newsRef = firebase.database().ref('Noticias');
+
       newsRef.on('value', (snapshot) => {
         const news = snapshot.val();
         const newsList = [];
@@ -22,6 +24,11 @@ export default function SecNoticias( props) {
       });
     }, []);
 
+    function handleEdit(editableNews){
+      setEditableNews(editableNews);
+      props.onEdit(editableNews);
+    }
+
     return (
       <Card className={classes.root}>
         <CardContent>
@@ -31,7 +38,7 @@ export default function SecNoticias( props) {
           <div className={classes.news}>
               {newsList ? newsList.map((news,index) =>
 
-              <Noticia className={classes.news} news={news} key={index}/> ) : ''}  
+              <Noticia onClick={handleEdit} className={classes.news} news={news} key={index}/> ) : ''}  
           </div>
 
              
@@ -63,6 +70,7 @@ const useStyles = makeStyles({
     height: '75%',
     display: 'box',
     justifyContent:'flex-start',
+    alignItems:'center',
     overflow: 'scroll',
     flexDirection: 'row',
   },

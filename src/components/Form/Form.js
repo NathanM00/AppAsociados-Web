@@ -5,6 +5,10 @@ import firebase from '../../utils/firebase';
 
 function Form(props){
 
+    if(props.editInfo !== null){
+        console.log(props.editInfo);
+    }
+
     const [archivoAd, setArchivoAdj] = React.useState(null);
     const [fileUrl, setFileUrl] = React.useState(null);
 
@@ -69,7 +73,7 @@ function Form(props){
                   console.log('Noticia subido')
             }
         }
-
+        e.target.reset();
       };
 
     
@@ -78,7 +82,7 @@ function Form(props){
                 {props.form === "full" &&   
                 <div className={classes.form_top}>
                     <label className={classes.form_label}>Destino:</label>
-                    <input name={"destino"}  className={classes.form_input} type="text"/>
+                    <input name={"destino"}  className={classes.form_input} placeholder="Lugar de destino" type="text"/>
                     <label className={classes.form_label}>Fecha:</label>
                     <input name={"fecha"}className={classes.form_input} placeholder="Día/Mes/Año" type="date"/>
                 </div>    
@@ -86,7 +90,7 @@ function Form(props){
                 {props.form === "noFull" &&   
                     <div className={classes.form_top}>
                         <label className={classes.form_label}>Titular:</label>
-                        <input name={"titular"} className={classes.form_input} type="text"/>
+                        <input name={"titular"} className={classes.form_input} placeholder="Titular de la noticia" type="text"/>
                         <label className={classes.form_label} style={{visibility: 'hidden' }} >Fecha:</label>
                         <input className={classes.form_input} style={{visibility: 'hidden' }} placeholder="Día/Mes/Año" type="date"/>
                     </div>
@@ -94,13 +98,13 @@ function Form(props){
                 {props.form === "full" &&   
                     <div className={classes.form_mid}>
                         <label className={classes.form_label}>Descripción:</label>
-                        <textarea  name={"descripcion"}  className={classes.form_tarea} rows="4" cols="30"/>
+                        <textarea  name={"descripcion"} placeholder="Descripción de la actividad"  className={classes.form_tarea} rows="4" cols="30"/>
                     </div>
                 }
                 {props.form === "noFull" &&   
                     <div className={classes.form_mid}>
                         <label className={classes.form_label}>Cuerpo:</label>
-                        <textarea  name={"cuerpo"}  className={classes.form_tarea} rows="4" cols="30"/>
+                        <textarea  name={"cuerpo"} placeholder="Cuerpo de la noticia" className={classes.form_tarea} rows="4" cols="30"/>
                     </div>
                 }
                 <div className={classes.form_bot}>
@@ -177,7 +181,8 @@ const useStyles = makeStyles({
     width: '100%',
     height: '100%',
     margin: "0 5% 0 0",
-    padding: '0',
+    padding: '1% 0 0 2%',
+    fontFamily: 'Roboto',
     fontSize: '20px',
     border: '3px solid #C8C8C8',
     borderRadius: '15px',

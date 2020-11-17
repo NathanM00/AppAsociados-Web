@@ -13,14 +13,13 @@ export default function Evento({ event }) {
           <h1 className={classes.title}>{event.destino}</h1>
           <h1 className={classes.date}>{event.fecha}</h1>
           <Button  className={classes.edit}>Editar evento</Button>
-
     </div>
   );
 }
 
 const useStyles = makeStyles({
   root: {
-    margin: "0 0% 2% 5%",
+    margin: "0.5% 0% 0 5%",
     borderRadius: '25px',
     width: '30%',
     display: 'flex',
@@ -28,7 +27,7 @@ const useStyles = makeStyles({
     height:'92%',
     justifyContent: 'flex-start',
     padding: '0',
-    border: '1px solid #C8C8C8',
+    border: 'solid 1px grey',
 
   },
   image: {
@@ -60,8 +59,8 @@ const useStyles = makeStyles({
     width: '35%',
     textAlign: 'center',
     justifyContent: 'center',
-    border: '1px solid #FF9D43',
-    color: '#FF9D43',
+    backgroundColor: '#FF9D43',
+    color: '#ffffff',
     fontWeight: 'bold',
     borderRadius: '20px',
     marginRight: '5%'

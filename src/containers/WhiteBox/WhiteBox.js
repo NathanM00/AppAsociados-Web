@@ -10,12 +10,6 @@ function WhiteBox(props) {
 
     const classes = useStyles();
 
-    const [name, setName] = useState("");
-    
-   function handleChange(input){
-     // console.log(input);
-    }
-
     return (
         <Card className={classes.root} height={props.size !== "" ? props.size : "auto"}>
             <CardContent>
@@ -35,7 +29,7 @@ function WhiteBox(props) {
               </p>
             }
               {props.hasForm === true &&   
-                  <Form form={props.form}></Form>
+                  <Form editInfo={props.edit} form={props.form}></Form>
               }
             </CardContent>          
         </Card>
