@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/AppAsociados-Web/static/css/main.00ab5e1d.chunk.css",
-    "main.js": "/AppAsociados-Web/static/js/main.6ef806a8.chunk.js",
-    "main.js.map": "/AppAsociados-Web/static/js/main.6ef806a8.chunk.js.map",
+    "main.js": "/AppAsociados-Web/static/js/main.2c8911f6.chunk.js",
+    "main.js.map": "/AppAsociados-Web/static/js/main.2c8911f6.chunk.js.map",
     "runtime-main.js": "/AppAsociados-Web/static/js/runtime-main.97f04934.js",
     "runtime-main.js.map": "/AppAsociados-Web/static/js/runtime-main.97f04934.js.map",
     "static/js/2.a5299b64.chunk.js": "/AppAsociados-Web/static/js/2.a5299b64.chunk.js",
     "static/js/2.a5299b64.chunk.js.map": "/AppAsociados-Web/static/js/2.a5299b64.chunk.js.map",
     "index.html": "/AppAsociados-Web/index.html",
-    "precache-manifest.657a93adbf277c10c3ec4bf5153a0161.js": "/AppAsociados-Web/precache-manifest.657a93adbf277c10c3ec4bf5153a0161.js",
+    "precache-manifest.60e3de6a3be316266290ebff2b7a3616.js": "/AppAsociados-Web/precache-manifest.60e3de6a3be316266290ebff2b7a3616.js",
     "service-worker.js": "/AppAsociados-Web/service-worker.js",
     "static/css/main.00ab5e1d.chunk.css.map": "/AppAsociados-Web/static/css/main.00ab5e1d.chunk.css.map",
     "static/js/2.a5299b64.chunk.js.LICENSE.txt": "/AppAsociados-Web/static/js/2.a5299b64.chunk.js.LICENSE.txt",
@@ -34,6 +34,6 @@
     "static/js/runtime-main.97f04934.js",
     "static/js/2.a5299b64.chunk.js",
     "static/css/main.00ab5e1d.chunk.css",
-    "static/js/main.6ef806a8.chunk.js"
+    "static/js/main.2c8911f6.chunk.js"
   ]
 }
