@@ -1,6 +1,6 @@
 import React from 'react';
 import {CssBaseline } from '@material-ui/core';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import VistaGeneral from '../../Pages/VistaGeneral/VistaGeneral';
 import Noticias from '../../Pages/Noticias/Noticias';
 import Analiticas from '../../Pages/Analiticas/Analiticas';
@@ -10,7 +10,7 @@ import Eventos from '../../Pages/Eventos/Eventos';
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <div className="App">
         <div className="MainContainer">
              <NavBar/>

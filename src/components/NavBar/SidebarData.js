@@ -19,7 +19,7 @@ export const SidebarData = [
     icon: generalView,  
     icon2: generalView2,
     cName: 'nav-text',
-    estate: true,
+    estate: false,
   },
   {
     title: 'Analíticas',
