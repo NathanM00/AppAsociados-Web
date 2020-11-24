@@ -1,15 +1,15 @@
 import { makeStyles } from '@material-ui/core';
 import React from 'react';
 
-const ChatListItem = () => {
+const ChatListItem = ({onClick, active, data}) => {
     const classes = useStyles();
 
     return (
-        <div className={classes.container}>
+        <div className={`${classes.container} ${classes.active?'active':''}`} onClick={onClick}>
             <img className={classes.userImg}/>
 
             <div className={classes.userInfo}>
-                <h1 className={classes.userName}>Nombre</h1>
+                <h1 className={classes.userName}>{data.title}</h1>
                 <p className={classes.lastMsg}>mensaje mensaje mensaje</p>
             </div>
 
@@ -30,7 +30,11 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         alignContent: 'center',
         marginBottom: '3%',
-        
+        cursor: 'pointer',
+    },
+
+    active: {
+        backgroundColor: '#FFFFFF',
     },
 
     userImg: {

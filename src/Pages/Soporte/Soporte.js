@@ -2,11 +2,25 @@ import React, {useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ChatListItem from '../../components/ChatListItem/ChatListItem';
 import Button from '@material-ui/core/Button';
+import ChatWindow from '../../components/ChatWindow/ChatWindow';
+import MessageItem from '../../components/MessageItem/MessageItem';
 
 const Soporte = () => {
     const classes = useStyles();
 
-    const [chatList, setChatList] = useState([{},{},{},{}]);
+    const [chatList, setChatList] = useState([
+        {chatId: 1, title: 'Juan'},
+        {chatId: 2, title: 'Camila'},
+        {chatId: 3, title: 'Juan'},
+        {chatId: 4, title: 'Juan'},
+    ]);
+
+    const [activeChat, setActiveChat] = useState({});
+
+    const [user,setUser] = useState({
+        id: 1234,
+        name: 'Pepe',
+    });
 
     return(
         <div className={classes.container}>
@@ -18,24 +32,20 @@ const Soporte = () => {
                     {chatList.map((item, key)=>(
                         <ChatListItem
                             key={key}
+                            data={item}
+                            active={activeChat.chatId === chatList[key].chatId}
+                            onClick={()=>setActiveChat(chatList[key])}
                         />
                     ))}
                 </div>
             </section>
 
             <section className={classes.chat}>
-                <div className={classes.header}>
-                    <h1 className={classes.userName}>Nombre de asociado</h1>
-                </div>
-
-                <div className={classes.container_chat}>
-                    <div className={classes.msgList}></div>
-
-                    <div className={classes.msg}>
-                        <input className={classes.mesageInput} type="search" placeholder="Escribe un mensaje"></input>
-                        <Button className={classes.btn_enviar}>Enviar</Button>
-                    </div>
-                </div>
+                {activeChat.chatId !== undefined &&
+                    <ChatWindow
+                        user={user}
+                    />
+                }
                 
             </section>
         </div>
