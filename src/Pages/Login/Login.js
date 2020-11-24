@@ -61,8 +61,8 @@ const Login = (props) => {
             autoComplete="email"
             autoFocus
             defaultValue={user.email}
-            onChange={handleChange}
-          />
+            onChange={handleChange}/>
+
           <TextField  className={classes.text}
             variant="outlined"
             margin="normal"
@@ -74,21 +74,20 @@ const Login = (props) => {
             id="password"
             autoComplete="current-password"
             defaultValue={user.password}
-            onChange={handleChange}
-          />
+            onChange={handleChange}/>
+
           <FormControlLabel className={classes.label}
             control={<Checkbox className={classes.check} value="remember" color="primary" />}
-            label={ <span className={classes.controllabel}>Remember me</span>}
-          />
-          <Button
+            label={ <span className={classes.controllabel}>Remember me</span>}/>
+
+          <Button className={classes.submit}
             type="submit"
             fullWidth
             variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
+            color="primary">
             Ingresar
           </Button>
+          
           <Grid container  className={classes.signup}>
             <Grid item className={classes.item}>
               <Link href="#" variant="body2">
@@ -127,8 +126,8 @@ const useStyles = makeStyles((theme) => ({
     submit: {
       margin: theme.spacing(3, 0, 2),
       margin: 0,
-      width: '100%%',
-      height: '7%',
+      width: '100%',
+      height: '6%',
     },
     titular: {
       margin: 0,
@@ -141,7 +140,7 @@ const useStyles = makeStyles((theme) => ({
       margin: "5% 0 0 0",
       marpagin: "5% 0 0 0",
       width: '100%',
-      height: '10%',
+      height: '7%', 
     },
     label: {
       margin: 0,

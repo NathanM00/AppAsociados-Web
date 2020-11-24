@@ -3,6 +3,7 @@ import { SidebarData } from './SidebarData';
 import { IconContext } from 'react-icons';
 import logo from '../../resources/navLogo.svg';
 import Bar from '../Bar/Bar';
+import User from '../User/User';
 
 function NavBar(props) {
 
@@ -40,6 +41,7 @@ function NavBar(props) {
                         )
                     })}
                 </ul>
+                <User/>
              </nav>
         </IconContext.Provider>
      

@@ -117,6 +117,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
     width: '100%%',
     height: '10%',
+    height: '10%',
   },
   titular: {
     margin: 0,
@@ -128,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
   text: {
     margin: "0 0 0 0",
     width: '100%',
-    height: '100%',
+    height: '75%',
   },
   grid: {
     width: '100%',
