@@ -40,15 +40,32 @@ function Form(props){
                 console.log('Evento no se subio')
             } else{
 
-                const evento = {
+                var evento = {
                     destino: destino,
                     fecha: fecha,
                     archivo: fileUrl,
                     descripcion: descripcion,
+                    comentarios:"",
+                    calificacion: {
+                      inicial: 5,
+                    },
                   };
 
-                  eventRef.push(evento);
-                  console.log('Evento subido')
+                  eventRef.push(evento).then(pushed_user => {
+                    evento = {
+                      destino: destino,
+                      fecha: fecha,
+                      archivo: fileUrl,
+                      descripcion: descripcion,
+                      comentarios:"",
+                      calificacion: 5,
+                      id: pushed_user.key,
+                    }
+
+                    eventRef.child(pushed_user.key).update(evento);
+                    console.log('Evento subido')
+                  });
+
             }
         } else if(props.form === "noFull"){
 
