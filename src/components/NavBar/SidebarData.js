@@ -61,5 +61,5 @@ export const SidebarData = [
     icon2: support2,
     cName: 'nav-text',
     estate: false,
-  }
+  },
 ];

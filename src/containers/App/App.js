@@ -6,7 +6,6 @@ import Noticias from '../../Pages/Noticias/Noticias';
 import Analiticas from '../../Pages/Analiticas/Analiticas';
 import Soporte from '../../Pages/Soporte/Soporte';
 import Login from '../../Pages/Login/Login';
-import SignUp from '../../Pages/SignUp/SignUp';
 import NavBar from '../../components/NavBar/NavBar';
 import './App.css';
 import Eventos from '../../Pages/Eventos/Eventos';
@@ -47,7 +46,6 @@ function App() {
               <Route path="/eventos" component={Eventos}/>
               <Route path='/soporte' component={Soporte}/>
               <Route path='/login' component={Login}/>
-              <Route path='/signup' component={SignUp}/>
             </Switch>
           </div>
           

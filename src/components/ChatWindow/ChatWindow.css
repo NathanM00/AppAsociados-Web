@@ -1,0 +1,20 @@
+.msgList{
+    height: 100%;
+    width: 100%;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+   
+}
+
+.msgList::-webkit-scrollbar{
+    width: 6px;
+    height: 6px;
+
+}
+
+.msgList::-webkit-scrollbar-thumb{
+    background-color: rgba(0,0,0,0.2);
+
+} 
