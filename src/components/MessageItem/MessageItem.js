@@ -8,15 +8,15 @@ const MessageItem = ({data, user})=>{
         <div 
             className={classes.container}
             style={{
-                justifyContent: user.id === data.author ? 'flex-end' : 'flex-start'
+                justifyContent: data.recibe === data.envia ? 'flex-end' : 'flex-start'
             }}
             >
             <div 
                 className={classes.messageItem}
-                style={{backgroundColor: user.id === data.author ? '#FFAB58' : '#FFFFFF'}}
+                style={{backgroundColor: data.recibe === data.envia ? '#FFAB58' : '#FFFFFF'}}
                 >
-                <p className={classes.txt}>{data.body}</p>
-                <p className={classes.hora}>12:00</p>
+                <p className={classes.txt}>{data.mensaje}</p>
+                <p className={classes.hora}>{data.hora}</p>
             </div>
             
         </div>

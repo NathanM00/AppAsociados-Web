@@ -50,6 +50,32 @@ const Soporte = () => {
        
     }, [])
 
+    const [id, setId] = useState ([]);
+
+    useEffect(()=>{
+        const ref = firebase.database().ref('Chats');
+        
+        ref.on('value', (snapshot) => {
+            const messages = snapshot.val();
+            const chatItem = [];
+            for(let id in messages){
+                chatItem.push({id, ...messages[id]});
+            }
+            chatItem.pop();
+            var ultimoMensajelist= chatItem[chatItem.length-1];
+            console.log(ultimoMensajelist);
+            setId(ultimoMensajelist);
+            console.log(chatItem);
+
+        });
+       
+    }, [])
+
+    function handleClick (e) {
+        console.log(e);
+    }
+
+
     if(user === null){
         return (<Login/>);
     }
@@ -65,20 +91,20 @@ const Soporte = () => {
                         <ChatListItem
                             key={key}
                             data={data}
-                            active={activeChat.chatId === chatList[key].chatId}
-                            onClick={()=>setActiveChat(chatList[key])}
+                            active={activeChat.id === chatList[key].id}
+                            onClick={handleClick}
                         />
                     ) : ''}
                 </div>
             </section>
 
             <section className={classes.chat}>
-                {activeChat.chatId !== undefined &&
+                {activeChat !== undefined && 
                     <ChatWindow
-                        user={user}
-                    />
+                    user={user}
+                    id={id}
+                />
                 }
-                
             </section>
         </div>
     );

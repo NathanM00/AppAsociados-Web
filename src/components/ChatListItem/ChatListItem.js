@@ -5,7 +5,7 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
 
-const ChatListItem = ({onClick, active, data}) => {
+const ChatListItem = ({props, onClick, active, data}) => {
     const classes = useStyles();
 
     const [chatItem, setChatItem] = useState ([]);
@@ -30,8 +30,12 @@ const ChatListItem = ({onClick, active, data}) => {
 
     }, [])
 
+    function handleClick() {
+        props.onClick(props.data);
+    }
+
     return (
-        <div className={`${classes.container} ${classes.active?'active':''}`} onClick={onClick}>
+        <div className={`${classes.container} ${classes.active?'active':''}`} onClick={handleClick}>
             <img className={classes.userImg}/>
 
             <div className={classes.userInfo}>
@@ -39,7 +43,7 @@ const ChatListItem = ({onClick, active, data}) => {
                 <p className={classes.lastMsg}>{chatItem.mensaje}</p>
             </div>
 
-            <div className={classes.hour}>{data.hora}</div>
+            <div className={classes.hour}>{chatItem.hora}</div>
         </div>
     );
 

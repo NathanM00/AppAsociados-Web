@@ -4,65 +4,82 @@ import Button from '@material-ui/core/Button';
 import MessageItem from '../../components/MessageItem/MessageItem';
 import './ChatWindow.css';
 
+import firebase from 'firebase/app';
+import 'firebase/database';
+import 'firebase/auth';
 
-const ChatWindow = ({user})=>{
+
+const ChatWindow = ({user, chatList, id})=>{
     const classes = useStyles();
 
     const [text, setText] = useState('');
 
     const body = useRef();
 
-    const [list, setList] = useState([
-        {author: 123, body: 'Hola'},
-        {author: 123, body: 'Necesito ayuda'},
-        {author: 1234, body: 'Buenas tardes'},
-        {author: 123, body: 'Hola'},
-        {author: 123, body: 'Necesito ayuda'},
-        {author: 1234, body: 'Buenas tardes'},
-        {author: 123, body: 'Hola'},
-        {author: 123, body: 'Necesito ayuda'},
-        {author: 1234, body: 'Buenas tardes'},
-        {author: 123, body: 'Hola'},
-        {author: 123, body: 'Necesito ayuda'},
-        {author: 1234, body: 'Buenas tardes'},
-        {author: 123, body: 'Necesito ayuda'},
-        {author: 1234, body: 'Buenas tardes'},
-        {author: 123, body: 'Hola'},
-        {author: 123, body: 'Necesito ayuda'},
-        {author: 1234, body: 'Buenas tardes'},
-        {author: 123, body: 'Necesito ayuda'},
-        {author: 1234, body: 'Buenas tardes'},
-        {author: 123, body: 'Hola'},
-        {author: 123, body: 'Necesito ayuda'},
-        {author: 1234, body: 'Buenas tardes'},
-        {author: 123, body: 'Necesito ayuda'},
-        {author: 1234, body: 'Buenas tardes'},
-        {author: 123, body: 'Hola'},
-        {author: 123, body: 'Necesito ayuda'},
-        {author: 1234, body: 'Buenas tardes'},
-    ]);
+    /*const [list, setList] = useState([]);
+
+    useEffect(() => {
+        const refItem = firebase.database().ref('Chats');
+        const chat = refItem.child(id.id);
+
+        chat.on('value', (snapshot) => {
+            const messages = snapshot.val();
+            const list = [];
+            for(let id in messages){
+                list.push({id, ...messages[id]});
+            }
+            list.pop();
+            var ultimoMensajelist= list[list.length-1];
+            console.log(ultimoMensajelist);
+            setList(list);
+            console.log(list);
+
+        });
+
+    }, [])*/
+
+    const [info, setInfo] = useState ([]);
+
+    useEffect(() => {
+        const refItem = firebase.database().ref('Chats');
+        const chat = refItem.child(id.id);
+
+        chat.on('value', (snapshot) => {
+            const messages = snapshot.val();
+            const info = [];
+            for(let id in messages){
+                info.push({id, ...messages[id]});
+            }
+            //chatItem.pop();
+            //var ultimoMensajelist= chatItem[chatItem.length-1];
+            //console.log(ultimoMensajelist);
+            setInfo(info);
+            console.log(info);
+
+        });
+
+    }, [])
 
     useEffect(()=>{
         if(body.current.scrollHeight > body.current.offsetHeight){
             body.current.scrollTop = body.current.scrollHeight - body.current.offsetHeight;
         }
-    }, [list])
+    }, [info])
 
     return (
         <div className={classes.container}>
             <div className={classes.header}>
-    <h1 className={classes.userName}>{user.nombre}</h1>
+            <h1 className={classes.userName}>{info.envia}</h1>
                 </div>
 
                 <div className={classes.container_chat}>
                     <div ref={body} className="msgList">
-                        {list.map((item, key)=>(
+                        {info ? info.map((data, key) =>
                             <MessageItem
                                 key={key}
-                                data={item}
-                                user={user}
+                                data={data}
                             />
-                        ))}
+                        ): ''}
                     </div>
 
                     <div className={classes.chatbar}>
