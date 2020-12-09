@@ -1,22 +1,24 @@
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-import {XYPlot, VerticalBarSeries} from 'react-vis';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 function Chart(props){
 
     const classes = useStyles();
     const data = [
-        {x: 0, y: 8},
-        {x: 1, y: 5},
-        {x: 2, y: 4},
-        {x: 3, y: 9},
+        {name: 'Page A', uv: 400, pv: 2400, amt: 2400},
+        {name: 'Page B', uv: 10, pv: 220, amt: 1400}
+
       ];
         
     return (
         <div className={classes.root}>
-          <XYPlot height={200} width={200}>
-            <VerticalBarSeries  data={data} />
-         </XYPlot>
+                <LineChart width={600} height={300} data={data}>
+                        <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+                        <CartesianGrid stroke="#ccc" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                </LineChart>
       </div>
     );
 }
