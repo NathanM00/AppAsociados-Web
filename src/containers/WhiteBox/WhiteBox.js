@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { Button } from '@material-ui/core';
 import Form from '../../components/Form/Form';
+import Chart from '../../components/Chart/Chart';
 
 function WhiteBox(props) {
 
@@ -29,6 +30,9 @@ function WhiteBox(props) {
                   src={require("../../resources/"+props.image+".png")}
                   title={props.imageHover}
                 />
+            }
+            {props.hasChart === true &&
+              <Chart></Chart>
             }
             {props.hasDesc === true &&   
               <p className={classes.desc}>

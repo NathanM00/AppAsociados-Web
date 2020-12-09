@@ -9,6 +9,7 @@ export default function Comentario({ coment }) {
 
       <div className={classes.header}>
           <h1 className={classes.title}>{coment.nombre}</h1>
+          <h1 className={classes.date}>Sección: {coment.seccion}</h1>
           <h1 className={classes.date}>{coment.fecha}</h1>
       </div>
       <h1 className={classes.desc}>{coment.comentario}</h1>
@@ -18,9 +19,9 @@ export default function Comentario({ coment }) {
 
 const useStyles = makeStyles({
   root: {
-    border: '4px solid #FF9D43',
+    borderLeft: '5px solid #FF9D43',
+    boxShadow: '5px 5px 3px -3px rgba(0,0,0,0.34)',
     margin: "0 5% 2% 5%",
-    borderRadius: '25px',
     width: '90%',
     display: 'flex',
     flexWrap: 'wrap',
@@ -36,6 +37,15 @@ const useStyles = makeStyles({
     width: '50%',
     fontWeight: 700,
   },
+  seccion: {
+    height: '100%',
+    padding: '2% 10% 0 0%',
+    margin: "0",
+    fontSize: '15px',
+    textAlign: 'right',
+    width: '50%',
+    borderRight: '2px solid #000',
+  },
   date: {
     height: '100%',
     padding: '2% 10% 0 0%',
@@ -47,8 +57,7 @@ const useStyles = makeStyles({
   header:{
     display: 'flex',
     justifyContent:' space-between',
-    marginBottom: "2%",
-    height: '35%',
+    height: '42%',
   },
   desc: {
     height: '60%',

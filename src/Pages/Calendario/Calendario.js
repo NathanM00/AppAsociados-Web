@@ -1,32 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import WhiteBox from '../../containers/WhiteBox/WhiteBox'
-import UpBar from '../../containers/UpBar/UpBar'
-import Chart from '../../components/Chart/Chart';
+import Unaviable from '../../containers/Unaviable/Unaviable'
 
-function Analiticas(props) {
-
+function Calendario(props) {
     const classes = useStyles();
 
     return (
         <div className={classes.grandContainer}>
-
-        <Chart></Chart>
-
-
-            <Grid container spacing={2} wrap={"wrap"} alignItems={"flex-start"} justify={"flex-start"} className={classes.container}>
+            <Grid container spacing={1} wrap={"wrap"} alignItems={"flex-start"} justify={"flex-start"} className={classes.container}>
                 
             <Grid item xs={12}  className={classes.box}>
-                <UpBar></UpBar>
-            </Grid>
+            </Grid>         
+            
+            <Grid item xs={12}  className={classes.box}>
+                <Unaviable></Unaviable>
+            </Grid>  
 
             </Grid>
         </div>
     )
 }
 
-export default Analiticas;
+export default Calendario;
 
 const useStyles = makeStyles((theme) => ({
     grandContainer: {
@@ -37,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
         height: 'auto',
       },
     box: {
-        height: 'auto',
+        height: '100%',
     },
-  }));
+}));
   

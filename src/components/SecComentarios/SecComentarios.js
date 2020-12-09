@@ -33,8 +33,7 @@ export default function SecComentarios( props) {
 
               <Comentario className={classes.coment} coment={coment} key={index}/> ) : ''}  
           </div>
-
-             
+     
         </CardContent>       
       </Card>
     );

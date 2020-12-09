@@ -7,23 +7,10 @@ import User from '../User/User';
 
 function NavBar(props) {
 
-    const [active, setActive] = React.useState(false);
-    const [ page, setPage] = React.useState(true);
+    const [ page, setPage] = React.useState('Vista General');
 
-
-    function handleChange(cambio){
-
-        /*
-        if(page === cambio){
-            console.log(cambio);
-            console.log(page);
-            setActive(true);
-        } else if(page !== cambio){
-            setPage (cambio);
-            console.log(cambio);
-            console.log(page);
-            setActive(false);
-        }*/
+    function handleChange(pagina){
+        setPage(pagina);
     }
 
     return ( 
@@ -36,7 +23,7 @@ function NavBar(props) {
                 <ul className='nav-menu-items' > 
                     {SidebarData.map((item, index) =>{
                         return(
-                         <Bar onClick= {handleChange} key={index}  active={item.estate}
+                         <Bar onClick= {handleChange} key={index} current={page}
                          path={item.path} cName={item.cName} title={item.title} icon={item.icon} icon2={item.icon2} />                         
                         )
                     })}

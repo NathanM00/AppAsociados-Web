@@ -12,6 +12,7 @@ import Eventos from '../../Pages/Eventos/Eventos';
 import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
+import Calendario from '../../Pages/Calendario/Calendario';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -45,6 +46,7 @@ function App() {
               <Route path="/noticias" component={Noticias}/>
               <Route path="/eventos" component={Eventos}/>
               <Route path='/soporte' component={Soporte}/>
+              <Route path='/calendario' component={Calendario}/>
               <Route path='/login' component={Login}/>
             </Switch>
           </div>
