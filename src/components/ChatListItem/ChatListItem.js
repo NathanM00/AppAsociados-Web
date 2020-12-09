@@ -1,19 +1,45 @@
 import { makeStyles } from '@material-ui/core';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+
+import firebase from 'firebase/app';
+import 'firebase/database';
+import 'firebase/auth';
 
 const ChatListItem = ({onClick, active, data}) => {
     const classes = useStyles();
+
+    const [chatItem, setChatItem] = useState ([]);
+
+    useEffect(() => {
+        const refItem = firebase.database().ref('Chats');
+        const chat = refItem.child(data.id);
+
+        chat.on('value', (snapshot) => {
+            const messages = snapshot.val();
+            const chatItem = [];
+            for(let id in messages){
+                chatItem.push({id, ...messages[id]});
+            }
+            chatItem.pop();
+            var ultimoMensajelist= chatItem[chatItem.length-1];
+            console.log(ultimoMensajelist);
+            setChatItem(ultimoMensajelist);
+            console.log(chatItem);
+
+        });
+
+    }, [])
 
     return (
         <div className={`${classes.container} ${classes.active?'active':''}`} onClick={onClick}>
             <img className={classes.userImg}/>
 
             <div className={classes.userInfo}>
-                <h1 className={classes.userName}>{data.title}</h1>
-                <p className={classes.lastMsg}>mensaje mensaje mensaje</p>
+                <h1 className={classes.userName}>{chatItem.envia}</h1>
+                <p className={classes.lastMsg}>{chatItem.mensaje}</p>
             </div>
 
-            <div className={classes.hour}>12:00</div>
+            <div className={classes.hour}>{data.hora}</div>
         </div>
     );
 
