@@ -5,14 +5,14 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
 
-const ChatListItem = ({props, onClick, active, data}) => {
+const ChatListItem = (props) => {
     const classes = useStyles();
 
     const [chatItem, setChatItem] = useState ([]);
 
     useEffect(() => {
         const refItem = firebase.database().ref('Chats');
-        const chat = refItem.child(data.id);
+        const chat = refItem.child(props.data.id);
 
         chat.on('value', (snapshot) => {
             const messages = snapshot.val();
@@ -31,7 +31,7 @@ const ChatListItem = ({props, onClick, active, data}) => {
     }, [])
 
     function handleClick() {
-        props.onClick(data);
+        props.onClick(props.data.id);
     }
 
     return (

@@ -8,9 +8,9 @@
 }
 
 .App{
-    zoom: 80%;
     height: 100%;
     width: 100%;
+    zoom: 80%;
     display: flex;
 }
 

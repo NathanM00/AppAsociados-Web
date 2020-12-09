@@ -1,25 +1,92 @@
 import { makeStyles } from '@material-ui/core/styles';
-import React from 'react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import {Bar} from 'react-chartjs-2';
+import React, { useState, useEffect } from 'react';
+import firebase from '../../utils/firebase';
+import { wait } from '@testing-library/react';
 
 function Chart(props){
 
     const classes = useStyles();
-    const data = [
-        {name: 'Page A', uv: 400, pv: 2400, amt: 2400},
-        {name: 'Page B', uv: 10, pv: 220, amt: 1400}
+    const [eventList, setEventList] = useState([]);
+    const [labelsEventos, setLabelsEventos] = useState([]);
+    const [ratingEventos, setRatingEventos] = useState([]);
+    const [numberREventos, setNumberREventos] = useState([]);
 
-      ];
-        
+    useEffect(() => {
+      const comentRef = firebase.database().ref('Eventos');
+      comentRef.on('value', (snapshot) => {
+        const events = snapshot.val();
+        const eventList = [];
+        const labelsEventos = [];
+        const ratingEventos = [];
+        const numberREventos = [];
+
+        for (let id in events) {
+            eventList.push({id, ...events[id] } );
+            ratingEventos.push(events[id].calificacion);
+            labelsEventos.push(events[id].destino);
+            numberREventos.push(events[id].numCali);
+
+        }
+        setEventList(eventList.reverse());
+        setLabelsEventos(labelsEventos.reverse());
+        setRatingEventos(ratingEventos.reverse());
+        setNumberREventos(numberREventos.reverse());
+
+        console.log(eventList);
+        console.log(labelsEventos);
+        console.log(ratingEventos);
+        console.log(numberREventos);
+
+      });
+    }, []);
+
     return (
         <div className={classes.root}>
-                <LineChart width={600} height={300} data={data}>
-                        <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-                        <CartesianGrid stroke="#ccc" />
-                        <XAxis dataKey="name" />
-                        <YAxis />
-                </LineChart>
-      </div>
+                    {props.chartType == 'eventos' && eventList &&  <div >
+
+                        <Bar className={classes.bar}  data={{
+                                labels:labelsEventos,
+                                datasets:[
+                                    {
+                                        label:'Calificación dada por los asociados',
+                                        data: ratingEventos,
+                                        backgroundColor: '#319CFF',
+                                    },
+                                    {
+                                        label:'Número de calificaciones',
+                                        data: numberREventos,
+                                        backgroundColor: '#FFB800',
+                                    },
+                            ],    
+                        }}
+                        height={400}
+                        width={400} 
+                        options={{
+                            maintainAspectRatio: false,
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        min: 0,
+                                        max:  15,                                       
+                                    }
+                                }]
+                            },
+                            layout: {
+                                padding: {
+                                    left: 0,
+                                    right: 50,
+                                    top: 0,
+                                    bottom: 0
+                                }
+                            }
+                        }}
+                        >
+                        </Bar> 
+                    </div>}
+        </div>
+ 
+   
     );
 }
 
@@ -30,8 +97,11 @@ const useStyles = makeStyles({
     root:{
         height: '100%',
         width: '100%',
-        margin: "0 0 5% 0",
-        padding: '0 5%',
+    },
+
+    bar:{
+        height: '100%',
+        width: '100%',
     }
 
 });

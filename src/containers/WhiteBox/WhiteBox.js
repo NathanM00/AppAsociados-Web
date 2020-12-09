@@ -12,15 +12,20 @@ function WhiteBox(props) {
     const classes = useStyles();
 
     return (
-        <Card className={classes.root} height={props.size !== "" ? props.size : "auto"}>
+        <Card className={classes.root} style={props.hasChart ? {zoom: '125%'} : {}} height={props.size !== "" ? props.size : "auto"}>
             <CardContent>
-              {!props.hasForm &&  
+              {!props.hasForm && !props.hasChart &&
                 <p className={classes.title}>
                     {props.title}
                 </p>
               }
-              {props.hasForm &&  
+              {props.hasForm && !props.hasChart &&
                 <p className={classes.titleForm}>
+                    {props.title}
+                </p>
+              }
+              {props.hasChart && !props.hasForm && 
+                <p className={classes.titleChart}>
                     {props.title}
                 </p>
               }
@@ -32,7 +37,7 @@ function WhiteBox(props) {
                 />
             }
             {props.hasChart === true &&
-              <Chart></Chart>
+              <Chart chartType={props.chartType}></Chart>
             }
             {props.hasDesc === true &&   
               <p className={classes.desc}>
@@ -52,7 +57,7 @@ export default WhiteBox;
 const useStyles = makeStyles({
     root: {
       maxWidth: '100%',
-      height: 'auto',
+      height: '100%',
       maxHeight: '50%',
       borderRadius: '10px'
     },
@@ -71,7 +76,17 @@ const useStyles = makeStyles({
       fontWeight: 700,
       width:'auto',
       color: "#474747",
-    },   
+    },  
+    titleChart: {
+      height: '5%',
+      padding: '1% 10% 0 5%',
+      margin: "0 0 3% 0",
+      fontSize: '32px',
+      fontWeight: 700,
+      width:'auto',
+      color: "#474747",
+      zoom:'80%',
+    },    
      titleForm: {
       height: '3%',
       padding: '1% 10% 0 5%',

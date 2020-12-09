@@ -60,7 +60,7 @@ function Form(props){
                       descripcion: descripcion,
                       comentarios:"",
                       numCali:0,
-                      calificacion: 5,
+                      calificacion: 0,
                       id: pushed_user.key,
                     }
 

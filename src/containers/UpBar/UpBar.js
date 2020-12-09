@@ -140,7 +140,6 @@ const useStyles = makeStyles({
         flexDirection: 'row',
       },
 
-
     searchbox: {
       height: '90%',
       width: '18%',
@@ -156,7 +155,7 @@ const useStyles = makeStyles({
         fontWeight: 700,
         color:'white',
       },
-  
+
 
   });
 
