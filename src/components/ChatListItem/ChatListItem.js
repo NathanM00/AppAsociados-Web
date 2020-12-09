@@ -31,7 +31,7 @@ const ChatListItem = ({props, onClick, active, data}) => {
     }, [])
 
     function handleClick() {
-        props.onClick(props.data);
+        props.onClick(data);
     }
 
     return (
