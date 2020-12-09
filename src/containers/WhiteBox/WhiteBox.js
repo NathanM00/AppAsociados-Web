@@ -13,9 +13,16 @@ function WhiteBox(props) {
     return (
         <Card className={classes.root} height={props.size !== "" ? props.size : "auto"}>
             <CardContent>
-              <p className={classes.title}>
-                {props.title}
-              </p>
+              {!props.hasForm &&  
+                <p className={classes.title}>
+                    {props.title}
+                </p>
+              }
+              {props.hasForm &&  
+                <p className={classes.titleForm}>
+                    {props.title}
+                </p>
+              }
               {props.hasImage === true &&   
               <img
                   className={classes.media}
@@ -53,13 +60,22 @@ const useStyles = makeStyles({
       padding: '0 5%',
     },
     title: {
-      height: '7%',
-      padding: '3% 10% 0 5%',
+      height: '5%',
+      padding: '1% 10% 0 5%',
       margin: "0 0 3% 0",
-      fontSize: '30px',
+      fontSize: '32px',
       fontWeight: 700,
       width:'auto',
       color: "#474747",
+    },   
+     titleForm: {
+      height: '3%',
+      padding: '1% 10% 0 5%',
+      margin: "0 0 3% 0",
+      fontSize: '32px',
+      fontWeight: 700,
+      width:'auto',
+      color: "#FF7F00",
     },
     desc: {
       height: '20%',

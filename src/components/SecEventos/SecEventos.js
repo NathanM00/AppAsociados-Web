@@ -44,18 +44,18 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     maxWidth: '100%',
-    height: '500px',
+    height: '420px',
     overflow: 'scroll',
 
   },
 
   title: {
-    height: '20%',
-    padding: '3% 5% 0 5%',
+    height: '13%',
+    padding: '1% 10% 0 5%',
     margin: "0 0 2% 0",
     fontSize: '30px',
     fontWeight: 700,
-    color: "#474747",
+    color: "#FF7F00",
   },
 
   events: {

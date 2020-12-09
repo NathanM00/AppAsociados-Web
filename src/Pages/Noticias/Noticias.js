@@ -3,6 +3,7 @@ import SecNoticias from '../../components/SecNoticias/SecNoticias';
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import WhiteBox from '../../containers/WhiteBox/WhiteBox'
+import UpBar from '../../containers/UpBar/UpBar'
 
 function Noticias(props) {
 
@@ -16,6 +17,11 @@ function Noticias(props) {
     return (
         <div className={classes.grandContainer}>
             <Grid container spacing={2} wrap={"wrap"} alignItems={"flex-start"} justify={"flex-start"} className={classes.container}>
+                
+            <Grid item xs={12}  className={classes.box}>
+                <UpBar></UpBar>
+            </Grid>
+
                 <Grid item xs={12}  className={classes.box}>
                      <SecNoticias onEdit={handleEdit} title={"Noticias recientes"} ></SecNoticias>
                 </Grid>
@@ -34,7 +40,7 @@ export default Noticias;
 const useStyles = makeStyles((theme) => ({
     grandContainer: {
       padding: "2%",
-      overflow: 'auto',
+      overflow: 'visible',
     },
     container: {
         height: 'auto',

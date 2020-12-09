@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import WhiteBox from '../../containers/WhiteBox/WhiteBox'
 import  SecEventos  from '../../components/SecEventos/SecEventos';
+import UpBar from '../../containers/UpBar/UpBar'
 
 function Eventos(props) {
 
@@ -11,6 +12,11 @@ function Eventos(props) {
     return (
         <div className={classes.grandContainer}>
             <Grid container spacing={2} wrap={"wrap"} alignItems={"flex-start"} justify={"flex-start"} className={classes.container}>
+              
+            <Grid item xs={12}  className={classes.box}>
+                <UpBar></UpBar>
+            </Grid>
+            
                 <Grid item xs={12}  className={classes.box}>
                      <SecEventos title={"Eventos recientes"} ></SecEventos>
                 </Grid>
@@ -29,7 +35,7 @@ export default Eventos;
 const useStyles = makeStyles((theme) => ({
     grandContainer: {
       padding: "2%",
-      overflow: 'auto',
+      overflow: 'visible',
     },
     container: {
         height: 'auto',

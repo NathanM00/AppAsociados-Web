@@ -4,6 +4,8 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import WhiteBox from '../../containers/WhiteBox/WhiteBox'
+import UpBar from '../../containers/UpBar/UpBar'
+
 //import {comentList}  from "../../utils/setTest";
 import Comentario from '../../components/Comentario/Comentario';
 
@@ -15,6 +17,10 @@ function VistaGeneral(props) {
         <div className={classes.grandContainer}>
             <Grid container spacing={2} wrap={"wrap"} alignItems={"flex-start"} justify={"flex-start"} className={classes.container}>
                 
+            <Grid item xs={12}  className={classes.box}>
+                <UpBar></UpBar>
+            </Grid>
+
             <Grid item xs={3}  className={classes.box}>
                         <WhiteBox title={"Número de Asociados"} hasDesc={false}
                          hasImage={true} image={"numeroAsoFake"} imageHover={"Esta es el numero de asociados a día de hoy"}></WhiteBox>

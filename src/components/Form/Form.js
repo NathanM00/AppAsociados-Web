@@ -46,6 +46,7 @@ function Form(props){
                     archivo: fileUrl,
                     descripcion: descripcion,
                     comentarios:"",
+                    numCali:0,
                     calificacion: {
                       inicial: 5,
                     },
@@ -58,6 +59,7 @@ function Form(props){
                       archivo: fileUrl,
                       descripcion: descripcion,
                       comentarios:"",
+                      numCali:0,
                       calificacion: 5,
                       id: pushed_user.key,
                     }
@@ -169,7 +171,6 @@ const useStyles = makeStyles({
   form_bot: {
     width: '100%',
     height: '30%',
-    margin: "0 0 2% 0",
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
