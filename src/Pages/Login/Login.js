@@ -14,7 +14,7 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
 
-const Login = (props) => {
+const Login = (props, {onReceive}) => {
   const classes = useStyles();
 
   const [user, setUser] = useState({

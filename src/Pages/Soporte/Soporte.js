@@ -4,23 +4,59 @@ import ChatListItem from '../../components/ChatListItem/ChatListItem';
 import Button from '@material-ui/core/Button';
 import ChatWindow from '../../components/ChatWindow/ChatWindow';
 import MessageItem from '../../components/MessageItem/MessageItem';
+import Login from '../Login/Login';
+
+import firebase from 'firebase/app';
+import 'firebase/database';
+import 'firebase/auth';
 
 const Soporte = () => {
     const classes = useStyles();
 
     const [chatList, setChatList] = useState([
-        {chatId: 1, title: 'Juan'},
+        /*{chatId: 1, title: 'Juan'},
         {chatId: 2, title: 'Camila'},
         {chatId: 3, title: 'Juan'},
-        {chatId: 4, title: 'Juan'},
+        {chatId: 4, title: 'Juan'},*/
     ]);
+
+    useEffect(()=>{
+        const ref = firebase.database().ref('Chats');
+        
+        ref.on('value', (snapshot) => {
+            const chat = snapshot.val();
+            const list = [];
+            for(let id in chat){
+                list.push({id, ...chat[id]});
+            }
+            setChatList(list.reverse());
+        });
+       
+    }, [])
+
 
     const [activeChat, setActiveChat] = useState({});
 
-    const [user,setUser] = useState({
-        id: 1234,
-        name: 'Pepe',
-    });
+    const [user,setUser] = useState(null);
+
+    useEffect(()=>{
+        firebase.auth().onAuthStateChanged(response => {
+            if (response){
+                //leer datos de usuario
+                firebase.database().ref(`/Soporte/${response.uid}`).once('value')
+                .then(snapshot => {
+                    setUser(snapshot.val());
+                });
+            }
+        });
+
+    }, [])
+
+
+
+    if(user === null){
+        return (<Login/>);
+    }
 
     return(
         <div className={classes.container}>
@@ -29,14 +65,14 @@ const Soporte = () => {
                     <input className={classes.searchInput} placeholder="Buscar un chat"></input>
                 </div>
                 <div className={classes.chatlist}>
-                    {chatList.map((item, key)=>(
+                    {chatList ? chatList.map((data, key) =>
                         <ChatListItem
                             key={key}
-                            data={item}
+                            data={data}
                             active={activeChat.chatId === chatList[key].chatId}
                             onClick={()=>setActiveChat(chatList[key])}
                         />
-                    ))}
+                    ) : ''}
                 </div>
             </section>
 

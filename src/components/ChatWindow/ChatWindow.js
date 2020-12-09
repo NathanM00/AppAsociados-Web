@@ -51,7 +51,7 @@ const ChatWindow = ({user})=>{
     return (
         <div className={classes.container}>
             <div className={classes.header}>
-                    <h1 className={classes.userName}>Nombre de asociado</h1>
+    <h1 className={classes.userName}>{user.nombre}</h1>
                 </div>
 
                 <div className={classes.container_chat}>
