@@ -71,7 +71,10 @@ const Soporte = () => {
        
     }, [])
 
+    const [data, setData] = useState ([])
+
     function handleClick (e) {
+        setData(e);
         console.log(e);
     }
 
@@ -91,7 +94,7 @@ const Soporte = () => {
                         <ChatListItem
                             key={key}
                             data={data}
-                            active={activeChat.id === chatList[key].id}
+                            //active={activeChat.id === chatList[key].id}
                             onClick={handleClick}
                         />
                     ) : ''}
@@ -102,7 +105,9 @@ const Soporte = () => {
                 {activeChat !== undefined && 
                     <ChatWindow
                     user={user}
-                    id={id}
+                    id = {id}
+                    data = {data}
+                    
                 />
                 }
             </section>

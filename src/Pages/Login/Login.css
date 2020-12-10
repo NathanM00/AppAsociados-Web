@@ -1,0 +1,8 @@
+#btn:hover {
+    background: linear-gradient(to right, #FF7F00, #FFB800);
+
+}
+
+#email:focus{
+    border-color: #319CFF;
+}

@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from "@material-ui/core/styles";
 import { Hidden } from '@material-ui/core';
+import './SecComentarios.css';
 
 export default function SecComentarios( props) {
   const classes = useStyles();
@@ -28,7 +29,7 @@ export default function SecComentarios( props) {
           <p className={classes.title}>
             {props.title}
           </p>
-          <div className={classes.comments}>
+          <div id='comments' className={classes.comments}>
               {comentList ? comentList.map((coment,index) =>
 
               <Comentario className={classes.coment} coment={coment} key={index}/> ) : ''}  

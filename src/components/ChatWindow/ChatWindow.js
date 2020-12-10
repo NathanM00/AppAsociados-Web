@@ -9,7 +9,7 @@ import 'firebase/database';
 import 'firebase/auth';
 
 
-const ChatWindow = ({user, chatList, id})=>{
+const ChatWindow = ({user, chatList, id, data})=>{
     const classes = useStyles();
 
     const [text, setText] = useState('');

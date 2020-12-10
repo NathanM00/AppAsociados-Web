@@ -1,0 +1,14 @@
+#comments{
+    overflow-y: scroll;
+}
+
+#comments::-webkit-scrollbar{
+    width: 6px;
+    height: 6px;
+
+}
+
+#comments::-webkit-scrollbar-thumb{
+    background-color: rgba(0,0,0,0.2);
+
+} 

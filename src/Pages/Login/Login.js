@@ -13,6 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
+import './Login.css';
 
 const Login = (props, {onReceive}) => {
   const classes = useStyles();
@@ -43,7 +44,7 @@ const Login = (props, {onReceive}) => {
   };
 
   return (
-      <div className={classes.paper}      >
+      <div className={classes.paper}>
         <Avatar className={classes.avatar}>
         </Avatar>
         <Typography component="h1" variant="h5" className={classes.titular}  >
@@ -63,7 +64,7 @@ const Login = (props, {onReceive}) => {
             defaultValue={user.email}
             onChange={handleChange}/>
 
-          <TextField  className={classes.text}
+          <TextField className={classes.text}
             variant="outlined"
             margin="normal"
             required
@@ -76,11 +77,7 @@ const Login = (props, {onReceive}) => {
             defaultValue={user.password}
             onChange={handleChange}/>
 
-          <FormControlLabel className={classes.label}
-            control={<Checkbox className={classes.check} value="remember" color="primary" />}
-            label={ <span className={classes.controllabel}>Remember me</span>}/>
-
-          <Button className={classes.submit}
+          <Button id='btn' className={classes.submit}
             type="submit"
             fullWidth
             variant="contained"
@@ -90,13 +87,8 @@ const Login = (props, {onReceive}) => {
           
           <Grid container  className={classes.signup}>
             <Grid item className={classes.item}>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item  className={classes.item}>
-              <Link href="/AppAsociados-Web#/signup" variant="body2">
-                {"Don't have an account? Sign Up"}
+              <Link href="#" variant="body2" className={classes.nContra}>
+                ¿Olvidaste tu Contraseña?
               </Link>
             </Grid>
           </Grid>
@@ -109,9 +101,10 @@ export default withRouter(Login);
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-      marginTop: theme.spacing(8),
+      marginTop: theme.spacing(25),
       display: 'flex',
       flexDirection: 'column',
+      justifyContent: 'center',
       alignItems: 'center',
     },
     avatar: {
@@ -119,19 +112,26 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.secondary.main,
     },
     form: {
-      width: '40%', // Fix IE 11 issue.
+      width: '30%', // Fix IE 11 issue.
       height: '100%',
       marginTop: theme.spacing(1),
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
-      margin: 0,
+      marginTop: '8%',
+      fontSize: '18px',
+      marginBottom: '0',
       width: '100%',
+      textTransform: 'none',
+      backgroundColor: '#FF7F00',
+      borderRadius: '100px',
       height: '6%',
     },
     titular: {
       margin: 0,
-      width: '40%',
+      width: '30%',
+      fontSize: '35px',
+      color: '#787878',
       height: 'auto',
     },
     controllabel:{
@@ -158,7 +158,20 @@ const useStyles = makeStyles((theme) => ({
       height: '10%',
     },
     item:{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
       margin: "0% 0 0 0",
+      width: '100%%',
+      height: '50%',
+    },
+    nContra:{
+      display: 'flex',
+      color: '#3F3F3F',
+      fontSize: '18px',
+      justifyContent: 'center',
+      alignItems: 'center',
+      margin: "0",
       width: '100%%',
       height: '50%',
     },
