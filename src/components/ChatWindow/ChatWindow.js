@@ -187,7 +187,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     chatbar: {
-        height: '11%',
+        height: '15%',
         width: '100%',
         padding: '2%',
         display: 'flex',

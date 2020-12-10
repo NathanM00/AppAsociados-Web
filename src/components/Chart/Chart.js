@@ -12,6 +12,10 @@ function Chart(props){
     const [ratingEventos, setRatingEventos] = useState([]);
     const [numberREventos, setNumberREventos] = useState([]);
 
+    const [voteList, setVoteList] = useState([]);
+    const [labelsVotes, setLabelsVotes] = useState([]);
+    const [numberVotes, setNumberVotes] = useState([]);
+
     const [priceList, setPriceList] = useState([]);
     const [labelsPremios, setLabelsPremios] = useState([]);
     const [canjeosPremio, setCanjeosPremio] = useState([]);
@@ -47,6 +51,32 @@ function Chart(props){
     }, []);
 
     useEffect(() => {
+        const voteRef = firebase.database().ref('Panfletos');
+        voteRef.on('value', (snapshot) => {
+          const votes = snapshot.val();
+          const voteList = [];
+          const labelsVotes = [];
+          const numberVotes = [];
+  
+          for (let id in votes) {
+            voteList.push({id, ...votes[id] } );
+            labelsVotes.push(votes[id].titular);
+            numberVotes.push(votes[id].votos);
+  
+          }
+          setVoteList(voteList.reverse());
+          setLabelsVotes(labelsVotes.reverse());
+          setNumberVotes(numberVotes.reverse());
+  
+          console.log(voteList);
+          console.log(labelsVotes);
+          console.log(numberVotes);
+  
+        });
+      }, []);
+  
+
+    useEffect(() => {
         const comentRef = firebase.database().ref('Premios');
         comentRef.on('value', (snapshot) => {
           const events = snapshot.val();
@@ -76,6 +106,45 @@ function Chart(props){
       }, []);
     return (
         <div className={classes.root}>
+
+                {props.chartType == 'Panfletos' && voteList &&  <div >
+                        <Bar className={classes.bar}  data={{
+                                labels:labelsVotes,
+                                datasets:[
+                                    {
+                                        label:'Votos por cada propuesta',
+                                        data: numberVotes,
+                                        backgroundColor: 'rgba(49, 156, 255, 0.6)',
+                                        borderColor	:'rgba(49, 156, 255, 1)',
+                                        borderWidth: '3',
+                                    },
+                            ],    
+                        }}
+                        height={400}
+                        width={400} 
+                        options={{
+                            maintainAspectRatio: false,
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        min: 0,
+                                        max:  15,                                       
+                                    }
+                                }]
+                            },
+                            layout: {
+                                padding: {
+                                    left: 0,
+                                    right: 50,
+                                    top: 0,
+                                    bottom: 0
+                                }
+                            }
+                        }}
+                        >
+                        </Bar> 
+                    </div>}
+
                     {props.chartType == 'Eventos' && eventList &&  <div >
                         <Bar className={classes.bar}  data={{
                                 labels:labelsEventos,

@@ -29,14 +29,28 @@ function Analiticas(props) {
                 <div  className={classes.buttonbox}>
                         <input  type="button" value={"Eventos"}  className={chartType !== "Eventos" ? classes.btn : classes.btnA}  onClick={handleClick}/>
                         <input  type="button" value={"Premios"}  className={chartType !== "Premios" ? classes.btn : classes.btnA}  onClick={handleClick}/>
+                        <input  type="button" value={"Panfletos"}  className={chartType !== "Panfletos" ? classes.btn : classes.btnA}  onClick={handleClick}/>
                         <input  type="button" value={"Convenios"} className={classes.btnInhabilitado}/>
                         <input  type="button" value={"Créditos"} className={classes.btnInhabilitado}/>
                 </div>
             </Grid>
 
             <Grid item xs={12} className={classes.box}>
+            {chartType== "Eventos" && 
+
                 <WhiteBox title={"Calificación Eventos"} hasDesc={false} hasChart={true} chartType={chartType}
                             hasImage={false} hasForm={false} form={"full"} ></WhiteBox>
+            }
+            {chartType== "Premios" && 
+
+                <WhiteBox title={"Canjeo de Premios"} hasDesc={false} hasChart={true} chartType={chartType}
+                            hasImage={false} hasForm={false} form={"full"} ></WhiteBox>
+            }
+            {chartType== "Panfletos" && 
+
+                 <WhiteBox title={"Tú eliges Diciembre 2020"} hasDesc={false} hasChart={true} chartType={chartType}
+                           hasImage={false} hasForm={false} form={"full"} ></WhiteBox>
+            }
             </Grid>
 
             </Grid>

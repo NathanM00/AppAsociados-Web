@@ -183,7 +183,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         padding: '2%',
         flexDirection: 'column',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#E3E3E3',
         borderTopLeftRadius: '20px',
         borderBottomLeftRadius: '20px',
     },

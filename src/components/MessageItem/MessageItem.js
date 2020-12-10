@@ -53,7 +53,8 @@ const useStyles = makeStyles((theme) => ({
     txt: {
         fontSize: '14px',
         display: 'inline-block',
-        marginRight: '20px'
+        marginRight: '40px',
+        marginBottom: '1%',
     },
 
     hora: {
