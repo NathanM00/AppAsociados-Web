@@ -3,62 +3,36 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import MessageItem from '../../components/MessageItem/MessageItem';
 import './ChatWindow.css';
-
 import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
+import { Portal } from '@material-ui/core';
 
 
-const ChatWindow = ({user, chatList, id, data})=>{
+const ChatWindow = (props)=>{
     const classes = useStyles();
 
     const [text, setText] = useState('');
 
     const body = useRef();
 
-    /*const [list, setList] = useState([]);
-
-    useEffect(() => {
-        const refItem = firebase.database().ref('Chats');
-        const chat = refItem.child(id.id);
-
-        chat.on('value', (snapshot) => {
-            const messages = snapshot.val();
-            const list = [];
-            for(let id in messages){
-                list.push({id, ...messages[id]});
-            }
-            list.pop();
-            var ultimoMensajelist= list[list.length-1];
-            console.log(ultimoMensajelist);
-            setList(list);
-            console.log(list);
-
-        });
-
-    }, [])*/
-
     const [info, setInfo] = useState ([]);
 
     useEffect(() => {
-        const refItem = firebase.database().ref('Chats');
-        const chat = refItem.child(id.id);
+        const refItem = firebase.database().ref('Chats'+props.data);
 
-        chat.on('value', (snapshot) => {
+        refItem.on('value', (snapshot) => {
             const messages = snapshot.val();
             const info = [];
             for(let id in messages){
                 info.push({id, ...messages[id]});
             }
-            //chatItem.pop();
-            //var ultimoMensajelist= chatItem[chatItem.length-1];
-            //console.log(ultimoMensajelist);
             setInfo(info);
             console.log(info);
 
         });
 
-    }, [])
+    },[]);
 
     useEffect(()=>{
         if(body.current.scrollHeight > body.current.offsetHeight){

@@ -10,6 +10,11 @@ import { Button } from '@material-ui/core';
 function Analiticas(props) {
 
     const classes = useStyles();
+    const [chartType,setChartType]= useState("Eventos");
+
+    function handleClick(e){
+        setChartType(e.target.value);
+    }
 
     return (
         <div className={classes.grandContainer}>
@@ -22,13 +27,15 @@ function Analiticas(props) {
 
             <Grid item xs={12}  className={classes.box}>
                 <div  className={classes.buttonbox}>
-                        <Button className={classes.btn}>Eventos</Button>
-                        <Button className={classes.btn}>Buscar</Button>            
+                        <input  type="button" value={"Eventos"}  className={chartType !== "Eventos" ? classes.btn : classes.btnA}  onClick={handleClick}/>
+                        <input  type="button" value={"Premios"}  className={chartType !== "Premios" ? classes.btn : classes.btnA}  onClick={handleClick}/>
+                        <input  type="button" value={"Convenios"} className={classes.btnInhabilitado}/>
+                        <input  type="button" value={"Créditos"} className={classes.btnInhabilitado}/>
                 </div>
             </Grid>
 
             <Grid item xs={12} className={classes.box}>
-                <WhiteBox title={"Calificación Eventos"} hasDesc={false} hasChart={true} chartType={'eventos'}
+                <WhiteBox title={"Calificación Eventos"} hasDesc={false} hasChart={true} chartType={chartType}
                             hasImage={false} hasForm={false} form={"full"} ></WhiteBox>
             </Grid>
 
@@ -64,9 +71,46 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '20px',
         backgroundColor:'white',
         marginRight:'5%',
+        cursor: 'pointer',
+        border: 'none',
         color:'#FF7F00',
+        fontSize:'18px',
         fontWeight:700,
         boxShadow: '0px 4px 4px -3px rgba(0,0,0,0.57);',
+        transition: '0.5s',
+        '&:hover': {  backgroundColor:'#EFEFEF',  },
+    },
+
+    btnA: {
+        width: '10%',
+        height: '95%',
+        borderRadius: '20px',
+        background:'linear-gradient(131.74deg, #FFB800 -6.99%, #FF7F00 77.19%, #FF5C00 134.86%)',
+        marginRight:'5%',
+        cursor: 'pointer',
+        border: 'none',
+        color:'white',
+        fontSize:'18px',
+        fontWeight:700,
+        boxShadow: '0px 4px 4px -3px rgba(0,0,0,0.57);',
+        transition: '0.5s',
+        '&:hover': {  backgroundColor:'#EFEFEF',  },
+    },
+
+    btnInhabilitado: {
+        width: '10%',
+        height: '95%',
+        borderRadius: '20px',
+        backgroundColor:'white',
+        marginRight:'5%',
+        cursor: 'not-allowed',
+        border: 'none',
+        color:'#FF7F00',
+        fontSize:'18px',
+        fontWeight:700,
+        boxShadow: '0px 4px 4px -3px rgba(0,0,0,0.57);',
+        transition: '0.5s',
+        '&:hover': {  backgroundColor:'#EFEFEF',  },
     },
     boxChart:{
         height: 'auto',

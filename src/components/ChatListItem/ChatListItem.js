@@ -10,6 +10,8 @@ const ChatListItem = (props) => {
 
     const [chatItem, setChatItem] = useState ([]);
 
+    console.log(props.data.id);
+
     useEffect(() => {
         const refItem = firebase.database().ref('Chats');
         const chat = refItem.child(props.data.id);

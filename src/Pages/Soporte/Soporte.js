@@ -75,7 +75,6 @@ const Soporte = () => {
 
     function handleClick (e) {
         setData(e);
-        console.log(e);
     }
 
 

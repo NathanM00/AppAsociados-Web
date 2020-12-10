@@ -48,7 +48,9 @@ const useStyles = makeStyles({
       height: '80px',
       display:' flex',
       flexDirection: 'row',
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      cursor: 'not-allowed',
+
     },
 
     lupa:{
@@ -148,6 +150,7 @@ const useStyles = makeStyles({
     },
 
     btn: {
+        cursor: 'not-allowed',
         height: '100%',
         width: '100%',
         fontSize: '20px',
