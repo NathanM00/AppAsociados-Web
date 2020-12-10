@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import aaa from '../../resources/lapiz.png'
+import aaa from '../../resources/desarrollo.png'
 
 function Unaviable(props) {
 
@@ -17,7 +17,7 @@ function Unaviable(props) {
 
             <img src={aaa} className={classes.media}/>
 
-            <p className={classes.desc}>La sección o funcionalidad a la que esta tratando de acceder esta en mantenimiento ó no esta disponible en este momento. Perdone las molestias, agradecemos su comprensión.</p>
+            <p className={classes.desc}>La sección o funcionalidad a la que esta tratando de acceder esta en mantenimiento o no esta disponible en este momento. Perdone las molestias, agradecemos su comprensión.</p>
 
             </div>
 
@@ -44,14 +44,16 @@ const useStyles = makeStyles({
       backgroundColor: '#FFEEDE',
     },
     media: {
-      height: '30%',
-      width: '20%',
+      height: '760px',
+      width: '600px',
+      marginBottom: '20px',
     },
     title: {
       height: '10%',
       fontSize: '50px',
       fontWeight: 700,
       width:'60%',
+      marginBottom: '20px',
       textAlign:'center',
       color: "#474747",
     },   
