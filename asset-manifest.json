@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "/AppAsociados-Web/static/css/main.92120724.chunk.css",
-    "main.js": "/AppAsociados-Web/static/js/main.fe1dac8b.chunk.js",
-    "main.js.map": "/AppAsociados-Web/static/js/main.fe1dac8b.chunk.js.map",
+    "main.css": "/AppAsociados-Web/static/css/main.44bb66d5.chunk.css",
+    "main.js": "/AppAsociados-Web/static/js/main.511594d9.chunk.js",
+    "main.js.map": "/AppAsociados-Web/static/js/main.511594d9.chunk.js.map",
     "runtime-main.js": "/AppAsociados-Web/static/js/runtime-main.97f04934.js",
     "runtime-main.js.map": "/AppAsociados-Web/static/js/runtime-main.97f04934.js.map",
-    "static/js/2.b51d1fbf.chunk.js": "/AppAsociados-Web/static/js/2.b51d1fbf.chunk.js",
-    "static/js/2.b51d1fbf.chunk.js.map": "/AppAsociados-Web/static/js/2.b51d1fbf.chunk.js.map",
+    "static/js/2.de310200.chunk.js": "/AppAsociados-Web/static/js/2.de310200.chunk.js",
+    "static/js/2.de310200.chunk.js.map": "/AppAsociados-Web/static/js/2.de310200.chunk.js.map",
     "index.html": "/AppAsociados-Web/index.html",
-    "precache-manifest.1703bb55e99d25402a5659072d49e37b.js": "/AppAsociados-Web/precache-manifest.1703bb55e99d25402a5659072d49e37b.js",
+    "precache-manifest.c70e3b81b46dbe34202473e9788e15fd.js": "/AppAsociados-Web/precache-manifest.c70e3b81b46dbe34202473e9788e15fd.js",
     "service-worker.js": "/AppAsociados-Web/service-worker.js",
-    "static/css/main.92120724.chunk.css.map": "/AppAsociados-Web/static/css/main.92120724.chunk.css.map",
-    "static/js/2.b51d1fbf.chunk.js.LICENSE.txt": "/AppAsociados-Web/static/js/2.b51d1fbf.chunk.js.LICENSE.txt",
+    "static/css/main.44bb66d5.chunk.css.map": "/AppAsociados-Web/static/css/main.44bb66d5.chunk.css.map",
+    "static/js/2.de310200.chunk.js.LICENSE.txt": "/AppAsociados-Web/static/js/2.de310200.chunk.js.LICENSE.txt",
+    "static/media/Vector (1).png": "/AppAsociados-Web/static/media/Vector (1).751bd57e.png",
     "static/media/calendar.svg": "/AppAsociados-Web/static/media/calendar.4fe35610.svg",
     "static/media/calendar2.svg": "/AppAsociados-Web/static/media/calendar2.f8fa19be.svg",
     "static/media/events.svg": "/AppAsociados-Web/static/media/events.590c53b6.svg",
@@ -29,8 +30,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.97f04934.js",
-    "static/js/2.b51d1fbf.chunk.js",
-    "static/css/main.92120724.chunk.css",
-    "static/js/main.fe1dac8b.chunk.js"
+    "static/js/2.de310200.chunk.js",
+    "static/css/main.44bb66d5.chunk.css",
+    "static/js/main.511594d9.chunk.js"
   ]
 }
