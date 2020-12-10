@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {CssBaseline } from '@material-ui/core';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import VistaGeneral from '../../Pages/VistaGeneral/VistaGeneral';
 import Noticias from '../../Pages/Noticias/Noticias';
 import Analiticas from '../../Pages/Analiticas/Analiticas';
@@ -15,10 +16,13 @@ import 'firebase/auth';
 import Calendario from '../../Pages/Calendario/Calendario';
 
 function App() {
-  const [user, setUser] = useState(null);
+
+  const [user, setUser] = useState(undefined);
+  const [redirectMain, setRedirectMain] = useState(false);
   
   const logOut = () => {
-    setUser(null);
+    setUser(undefined);
+    firebase.auth().signOut();
 
   }
 
@@ -28,10 +32,16 @@ function App() {
         //leer datos del usuario
         firebase.database().ref(`/users/${response.uid}`).once('value')
         .then(sanapshot => {
+       
           setUser(sanapshot.val());
+      
+            setRedirectMain(true)
+    
+     
         });
       }
     });
+   // logOut();
   }, []);
 
   return (
@@ -39,15 +49,31 @@ function App() {
         <div className="App">
         
           <div className="MainContainer">
-            <NavBar/>
+         
+      
             <Switch >
+
+          
+        
+            {user !== undefined?<>     
+              <NavBar/>
               <Route path="/" exact component={VistaGeneral}/>
               <Route path="/analiticas" component={Analiticas}/>
               <Route path="/noticias" component={Noticias}/>
               <Route path="/eventos" component={Eventos}/>
               <Route path='/soporte' component={Soporte}/>
               <Route path='/calendario' component={Calendario}/>
-              <Route path='/login' component={Login}/>
+
+              {redirectMain === true ?<Redirect to="/"/>:<></>}
+            
+              </>
+            :
+            <Route path='/login' component={Login}/> }
+
+            
+            {user === undefined ? <Redirect to="/login" /> :<></>}
+         
+          
             </Switch>
           </div>
           

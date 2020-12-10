@@ -10,11 +10,15 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
 
+
+let chatId =undefined;
+
 const Soporte = () => {
     const classes = useStyles();
 
-    const [activeChat, setActiveChat] = useState({});
+    const [activeChat, setActiveChat] = useState(undefined);
     const [user,setUser] = useState(null);
+    const [listItems, setListItems] = useState([]);
 
     useEffect(()=>{
         firebase.auth().onAuthStateChanged(response => {
@@ -36,6 +40,8 @@ const Soporte = () => {
         {chatId: 4, title: 'Juan'},*/
     ]);
 
+    const [id, setId] = useState ([]);
+/*
     useEffect(()=>{
         const ref = firebase.database().ref('Chats');
         
@@ -50,7 +56,7 @@ const Soporte = () => {
        
     }, [])
 
-    const [id, setId] = useState ([]);
+    
 
     useEffect(()=>{
         const ref = firebase.database().ref('Chats');
@@ -66,6 +72,38 @@ const Soporte = () => {
             console.log(ultimoMensajelist);
             setId(ultimoMensajelist);
             console.log(chatItem);
+
+        });
+       
+    }, [])
+*/
+    useEffect(()=>{
+        const ref = firebase.database().ref('Chats');
+        
+        ref.on('value', (snapshot) => {
+            const messages = snapshot.val();
+         
+            const list = [];
+            const chatItem = [];
+            let listaDeMensajes = [];
+
+            for(let id in messages){
+                chatItem.push({id, ...messages[id]});
+                list.push({id, ...messages[id]});
+
+                if(chatId !== undefined && chatId=== id){
+                    listaDeMensajes.push({...messages[id]})
+                }
+            }
+        
+            setChatList(list.reverse());
+            chatItem.pop();
+            var ultimoMensajelist= chatItem[chatItem.length-1];
+            console.log(ultimoMensajelist);
+            setId(ultimoMensajelist);
+            console.log(chatItem);
+
+            setListItems(listaDeMensajes)
 
         });
        
@@ -91,10 +129,17 @@ const Soporte = () => {
                 <div className={classes.chatlist}>
                     {chatList ? chatList.map((data, key) =>
                         <ChatListItem
-                            key={key}
+                            key={data.id}
                             data={data}
                             //active={activeChat.id === chatList[key].id}
-                            onClick={handleClick}
+                           // onClick={handleClick}
+                           onClick={()=>{
+                               setListItems([])
+                               chatId = data.id;
+                                setActiveChat(data)
+                           }
+                          
+                           }
                         />
                     ) : ''}
                 </div>
@@ -103,9 +148,12 @@ const Soporte = () => {
             <section className={classes.chat}>
                 {activeChat !== undefined && 
                     <ChatWindow
+                    key={activeChat.id}
                     user={user}
-                    id = {id}
-                    data = {data}
+                    id = {activeChat.id}
+                    data = {activeChat}
+                    list={listItems}
+                 
                     
                 />
                 }

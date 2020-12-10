@@ -18,8 +18,47 @@ const ChatWindow = (props)=>{
 
     const [info, setInfo] = useState ([]);
 
+
+    const [namePerfil, setNamePerfil] = useState("")
+
     useEffect(() => {
-        const refItem = firebase.database().ref('Chats'+props.data);
+
+        console.log("ffff",props.data)
+        console.log("LISTA",props.list)
+
+
+        let mensajes = undefined;
+
+        if(props.list.length > 0){
+            
+            mensajes = Object.values(props.list[0]);
+        }else{
+            mensajes = Object.values(props.data)
+        }
+
+        console.log(mensajes)
+     
+        let name = "";
+
+        let allMensajes = [];
+        mensajes.forEach((element, index) => {
+           
+            if(props.id == element){
+
+            }else{
+                if(name === ""){
+                    name= element.nombre;
+                    setNamePerfil(name)
+                }
+                allMensajes.push(element);
+            }
+
+        });
+
+        setInfo(allMensajes);
+
+        /*
+        const refItem = firebase.database().ref('Chats/'+props.id);
 
         refItem.on('value', (snapshot) => {
             const messages = snapshot.val();
@@ -32,7 +71,9 @@ const ChatWindow = (props)=>{
 
         });
 
-    },[]);
+        */
+
+    },[props.list]);
 
     useEffect(()=>{
         if(body.current.scrollHeight > body.current.offsetHeight){
@@ -40,10 +81,36 @@ const ChatWindow = (props)=>{
         }
     }, [info])
 
+    function handleEnviar(){
+
+        if(text !== ""){
+            let envia = info[0].recibe;
+            let recibe = info[0].envia;
+            let nombre = info[0].nombre;
+    
+            console.log()
+    
+            let date = new Date();
+            let newMensaje = {
+                envia,
+                hora : date.getHours().toString() + ":" + date.getMinutes().toString(),
+                mensaje : text,
+                nombre,
+                recibe,
+                visto : "si"
+              }
+    
+              setText("")
+    
+             const refItem = firebase.database().ref('Chats/'+props.id).push(newMensaje);
+        }
+       
+    }
+
     return (
         <div className={classes.container}>
             <div className={classes.header}>
-            <h1 className={classes.userName}>{info.envia}</h1>
+            <h1 className={classes.userName}>{namePerfil}</h1>
                 </div>
 
                 <div className={classes.container_chat}>
@@ -51,6 +118,7 @@ const ChatWindow = (props)=>{
                         {info ? info.map((data, key) =>
                             <MessageItem
                                 key={key}
+                                user={props.data.id}
                                 data={data}
                             />
                         ): ''}
@@ -64,7 +132,7 @@ const ChatWindow = (props)=>{
                                 value={text}
                                 onChange={e=>setText(e.target.value)}
                             />
-                            <Button className={classes.btn_enviar}>Enviar</Button>
+                            <Button className={classes.btn_enviar} onClick={handleEnviar}>Enviar</Button>
                         </div>
                     </div>
                     

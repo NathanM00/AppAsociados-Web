@@ -12,6 +12,8 @@ const ChatListItem = (props) => {
 
     console.log(props.data.id);
 
+    /*
+
     useEffect(() => {
         const refItem = firebase.database().ref('Chats');
         const chat = refItem.child(props.data.id);
@@ -32,6 +34,16 @@ const ChatListItem = (props) => {
 
     }, [])
 
+    */
+
+    useEffect(()=>{
+
+        let listaMensajes = Object.values(props.data);
+        var ultimoMensajelist= listaMensajes[listaMensajes.length-1];
+        setChatItem(ultimoMensajelist);
+
+    }, [props.data])
+
     function handleClick() {
         props.onClick(props.data.id);
     }
@@ -41,7 +53,7 @@ const ChatListItem = (props) => {
             <img className={classes.userImg}/>
 
             <div className={classes.userInfo}>
-                <h1 className={classes.userName}>{chatItem.envia}</h1>
+                <h1 className={classes.userName}>{chatItem.nombre}</h1>
                 <p className={classes.lastMsg}>{chatItem.mensaje}</p>
             </div>
 
@@ -106,6 +118,7 @@ const useStyles = makeStyles((theme) => ({
 
     hour: {
         width: '15%',
+        height: 'auto',
         justifyContent: 'flex-end',
     },
 
